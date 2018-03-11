@@ -1,6 +1,6 @@
 package com.interviewcake.solutions;
 
-public class Problem12 {
+public class Problem13 {
 
 	public static int findRotatedIndex(String[] words) {
 		// Sanitize the input.
