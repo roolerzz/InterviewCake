@@ -27,18 +27,18 @@ public class Problem16 {
 			this.weight = weight;
 		}
 	}
-	
+/*	
 	private class InfinityException extends RuntimeException{
 		public InfinityException() {
 			super("Value is infinity due to the inputs provided.");
 		}
 		
-	}
+	}*/
 	
-	public static int findMaxValueAtCapacity(int maxCapacity, CakeType[] cakeTypes) {
+	public static long findMaxValueAtCapacity(int maxCapacity, CakeType[] cakeTypes) {
 		if(maxCapacity < 0 || cakeTypes == null || cakeTypes.length==0)
 			throw new IllegalArgumentException("");
-		long[] maxValueAtCapacity = new long(maxCapacity + 1);
+		long[] maxValueAtCapacity = new long[maxCapacity + 1];
 		
 		for(int capacity = 0 ; capacity <= maxCapacity ; capacity++) {
 			long maxValue = 0;
@@ -47,7 +47,7 @@ public class Problem16 {
 				int value = cake.getValue();
 				int remainingWeight = capacity-weight;
 				if(weight == 0 && value != 0)
-					throw new InfinityException();
+					throw new RuntimeException();
 				if(weight <= capacity) {
 					Math.max(maxValue, value + maxValueAtCapacity[remainingWeight]);
 				}
@@ -55,5 +55,6 @@ public class Problem16 {
 			}
 			maxValueAtCapacity[capacity] = maxValue;
 		}
+		return maxValueAtCapacity[maxCapacity];
 	}
 }
